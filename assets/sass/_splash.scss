@@ -1,0 +1,79 @@
+@import "base";
+
+.lc-splash {
+
+    header {
+	text-align: center;
+
+	a {
+	    display: block;
+	    margin: 0;
+	    padding: calc(120px + 0.75em) 0 0.75em;  // 24px * 5, closest to 100px
+	    color: black;
+	    background: transparent url("../images/lc-monogram-black.png") no-repeat center 1rem;
+
+	    &:hover {
+		color: white;
+		text-decoration: none;
+		background: black url("../images/lc-monogram-white.png") no-repeat center 1rem;
+	    }
+	}
+	h1 {
+	    display: block;
+	    margin: 0;
+	    padding: 0;
+	    width: 100%;
+	    font-size: 2em;
+	    font-weight: normal;
+	}
+    }
+
+    section {
+	ul {
+	    list-style: disc;
+	    margin: 1.5rem 0;
+	}
+    }
+
+    $section-padding-left: calc(35px + 1rem);
+
+    #coding h2 { padding-left: $section-padding-left; background: url(../images/stackoverflow.png) no-repeat left center; }
+    #connect h2 { padding-left: $section-padding-left; background: url(../images/gmail.png) no-repeat left center; }
+    #articles h2 { padding-left: $section-padding-left; background: url(../images/feed.png) no-repeat left center; }
+    #toots h2 { padding-left: $section-padding-left; background: url(../images/microblog.png) no-repeat left center; }
+
+    .container {
+    }
+
+    .wrapper.odd {
+	background: rgba(0, 0, 0, 0.1);
+	padding: 0;
+	margin: 0;
+    }
+
+    .splash_box {
+	margin: 1.5em 1em;
+    }
+
+    .lc-post-micro {
+	padding-bottom: calc(1em / 16 * 22);
+	border-bottom: calc(1em / 16) solid #aaa;
+
+	img {
+	    max-width: 50%;
+	    margin-left: 10%;
+	    border: 10px solid #eee;
+	    box-shadow: 0 0 10px #999;
+	}
+	.lc-post-meta {
+	    margin-bottom: 0;
+
+	    .lc-post-time {
+		font-size: 0.8em;
+		text-transform: uppercase;
+	    }
+	}
+    }
+
+}
+

@@ -1,0 +1,12 @@
+<article class="lc-post lc-post-micro h-entry">
+    <div class="p-name">{{ .Content }}</div>
+    <div class="lc-post-meta">
+        <p>
+            <span class="lc-post-date bi-clock-fill" aria-hidden="true"></span>
+            <a href="{{ .Permalink }}" class="u-url">
+            <time class="lc-post-date dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> &infin;
+            </a>
+        </p>
+    </div>
+    <hr class="lc-post-hr" />
+</article>

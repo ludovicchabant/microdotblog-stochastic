@@ -1,0 +1,162 @@
+@import "base";
+
+.lc-blog {
+
+  aside {
+    font-size: 1.1em;
+
+    ul {
+      list-style-type: none;
+      margin: 0 0 -0.5em 0;
+      padding: 0;
+    }
+    ul li {
+      margin: 0 0 1em 0;
+    }
+
+    .sidebar-box {
+      border-bottom: 1px solid #d0d0d0;
+      padding: 1em 0;
+    }
+  }
+
+  .lc-site-title {
+    text-align: center;
+    font-size: 3em;
+    line-height: 1.5em;
+    margin: (1.5em / 3) 0;
+    font-weight: bold;
+  }
+
+  .lc-site-description {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 1.25em 0;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .lc-site-links {
+    margin: 1.5em 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+      display: inline;
+
+      &:not(:first-child):before {
+        content: ' • ';
+      }
+    }
+  }
+
+  .lc-content {
+    overflow: hidden;
+  }
+
+  .lc-navigation {
+  }
+  .lc-navigation-prev {
+    text-align: left;
+  }
+  .lc-navigation-next {
+    text-align: right;
+  }
+  .lc-navigation-center {
+    text-align: center;
+  }
+
+  .lc-post {
+    img {
+      max-width: 80%;
+      margin: 1em 10%;
+    }
+
+    hr {
+      margin-top: 1.5em;
+      border-top: (1em / 16) solid #ccc;
+      padding-bottom: (1em / 16 * 23);
+      margin-bottom: -1.5em;
+      background: none;
+      opacity: 1;
+    }
+    .footnotes hr {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    pre {
+      font-size: 1em;
+    }
+
+    .lc-post-meta {
+      clear: left;
+    }
+    .lc-post-meta em {
+      color: #666;
+      font-style: italic;
+    }
+    .lc-post-date {
+      text-transform: uppercase;
+      color: #666;
+    }
+    .lc-post-more,
+    .lc-post-footer {
+      margin: 1.5em 0 1.5em 0;
+    }
+    .lc-in-reply-to {
+      font-style: italic;
+      color: #666;
+      margin: 0 2em;
+    }
+  }
+  .lc-post+.lc-post>p:first-child,
+  .lc-post+.lc-post>h2:first-child,
+  .lc-post .footnotes ol li p:first-child {
+    margin-top: 0;
+  }
+
+  .lc-post-micro p {
+  }
+  .lc-post-micro img {
+    max-width: 60%;
+    border: 1em solid #eee;
+    box-shadow: 0 0 10px #999;
+  }
+
+  .lc-comment {
+    border-top: 1px solid #ccc;
+    padding-top: 1.5em;
+  }
+  p.lc-comment-title {
+    margin: 0;
+  }
+  p.lc-comment-author {
+    margin: 0;
+  }
+  img.lc-comment-avatar {
+    max-width: 48px;
+    max-height: 48px;
+  }
+  div.lc-comment-body {
+    margin-bottom: 1.5em;
+    p { margin: 0; }
+  }
+
+  .lc-archive-list {
+    list-style-type: none;
+  }
+  .lc-archive-list p {
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+  .lc-archive-date {
+    position: absolute;
+    left: 0;
+  }
+  .lc-archive-link {
+    margin-left: 5em;
+  }
+
+}
+

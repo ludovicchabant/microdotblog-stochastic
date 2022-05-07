@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<header>
+    <h1>{{ .Title }}</h1>
+</header>
+
+<div class="container">
+    <article class="lc-post">
+        {{ .Content }}
+    </article>
+</div>
+
+{{ partial "footer.html" . }}
+
+{{ end }}
+

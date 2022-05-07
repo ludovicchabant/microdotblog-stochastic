@@ -1,0 +1,49 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="{{ .Site.Params.Description }}" /> 
+<meta name="keywords" content="{{ .Site.Params.Keywords }}" /> 
+<meta name="copyright" content="{{ .Site.Params.Copyright }}" />
+<title>{{ .Page.Title | default .Site.Title }}</title>
+
+<link rel="canonical" href="{{ .Permalink }}" />
+
+{{ with .Site.Author }}
+    <link rel="me" href="https://micro.blog/{{ .username }}" />
+{{ end }}
+{{ with .Site.Params.twitter_username }}
+    <link rel="me" href="https://twitter.com/{{ . }}" />
+{{ end }}
+{{ with .Site.Params.github_username }}
+    <link rel="me" href="https://github.com/{{ . }}" />
+{{ end }}
+{{ with .Site.Params.instagram_username }}
+    <link rel="me" href="https://instagram.com/{{ . }}" />
+{{ end }}
+
+<link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
+<link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
+<link rel="micropub" href="https://micro.blog/micropub" />
+<link rel="microsub" href="https://micro.blog/microsub" />
+<link rel="webmention" href="https://micro.blog/webmention" />
+<link rel="subscribe" href="https://micro.blog/users/follow" />
+
+{{ $rss := .OutputFormats.Get "RSS" -}}
+{{ if $rss }}
+<link href="{{ $rss.RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+<link rel="alternate" type="application/json" title="{{ .Site.Title }}" href="{{ "feed.json" | absURL }}" />
+<link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
+{{ end -}}
+
+{{ if .Site.IsServer }}
+    {{ $sassOpts := (dict "targetPath" "css/style.css" "includePaths" (slice "build" "node_modules") "enableSourceMap" true) }}
+    {{ $style := resources.Get "sass/style.scss" | resources.ToCSS $sassOpts }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" media="screen">
+{{ else }}
+    {{ $sassOpts := (dict "targetPath" "css/style.css" "includePaths" (slice "build" "node_modules")) }}
+    {{ $style := resources.Get "sass/style.scss" | resources.ToCSS $sassOpts | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous" media="screen" />
+{{ end }}
+
+{{ block "head" . }}{{ end }}
+
+{{ hugo.Generator }}

@@ -1,0 +1,35 @@
+{{- with .Paginator }}
+<div class="row">
+    <nav class="col-sm-12 lc-navigation">
+        <div class="row">
+            <div class="col-sm-4 lc-navigation-prev">
+                {{ with .Prev }}
+                <i class="bi-arrow-left-circle-fill" aria-hidden="true"></i>&nbsp;<a href="{{ .URL }}" aria-label="Newer Entries">Newer Entries</a>
+                {{ end }}
+            </div>
+            <div class="col-sm-4 lc-navigation-center">
+                <i class="bi-inbox-fill" aria-hidden="true"></i>&nbsp;<a href="/blog/archives">Archives</a><br/>
+                {{- $slots := 5 }}
+                {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
+                {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
+                {{- if lt (add (sub $end $start) 1) $slots }}
+                {{- $start = math.Max 1 (add (sub $end $slots) 1) }}
+                {{- end }}
+
+                {{- range $k := seq $start $end }}
+                {{- if eq $.Paginator.PageNumber $k }}
+                <a aria-current="page" aria-label="Page {{ $k }}" role="button">{{ $k }}</a>
+                {{- else }}
+                <a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" aria-label="Page {{ $k }}" role="button">{{ $k }}</a>
+                {{- end }}
+                {{- end }}
+            </div>
+            <div class="col-sm-4 lc-navigation-next">
+                {{ with .Next }}
+                <a href="{{ .URL }}" aria-label="Older Entries">Older Entries</a>&nbsp;<i class="bi-arrow-right-circle-fill" aria-hidden="true"></i>
+                {{ end }}
+            </div>
+        </div>
+    </nav>
+</div>
+{{- end }}

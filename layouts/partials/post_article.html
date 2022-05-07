@@ -1,0 +1,32 @@
+<article class="lc-post h-entry">
+    <h2><a class="p-name u-url" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ if .Params.link }}
+    <div class="lc-in-reply-to">Comment on <a class="lc-external-link u-in-reply-to" href="{{ .Params.link }}">{{ if .Params.linktitle }}{{ .Params.linktitle }}{{ else }}{{ .Params.link}}{{ end }}</a></div>
+    {{ end }}
+
+    <div class="{{ if .Truncated }}p-summary{{ else }}e-content{{ end }}">
+    {{ .Summary }}
+    </div>
+
+    {{ if .Truncated }}
+    <div class="lc-post-more"><i class="bi-arrow-right-circle-fill"></i> <a class="u-url" href="{{ .Permalink }}">Read more...</a></div>
+    {{ end }}
+	
+    <div class="lc-post-meta">
+        <p>
+            <span class="lc-post-date bi-clock-fill" aria-hidden="true"></span>
+            <a href="{{ .Permalink }}" class="u-url">
+            <time class="lc-post-date dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> &infin;
+            </a>
+            {{ with .Params.categories }}
+            <em>in</em>
+            <span class="lc-post-tags">
+                {{ range $k, $tag := . }}
+                {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/categories/{{ $tag }}">{{ $tag }}</a>
+                {{ end }}
+            </span>
+            {{ end }}
+        </p>
+    </div>
+    <hr class="lc-post-hr" />
+</article>

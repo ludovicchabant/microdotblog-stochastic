@@ -1,0 +1,4 @@
+*.map
+node_modules
+assets/css
+assets/jsconfig.json

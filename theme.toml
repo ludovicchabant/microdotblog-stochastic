@@ -1,0 +1,14 @@
+name = "Stochastic"
+license = "MIT"
+licenselink = "https://github.com/ludovic/microdotblog-stochastic/blob/master/LICENSE"
+description = "A custom micro.blog theme for my website"
+homepage = "https://ludovic.chabant.com"
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "Ludovic Chabant"
+  homepage = "https://ludovic.chabant.com"
+
+# vim: ft=conf

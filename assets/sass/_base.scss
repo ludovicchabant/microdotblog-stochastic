@@ -1,0 +1,151 @@
+@import "bootstrap/scss/functions";
+
+$gray-light: #999;
+
+$brand-primary: #08c;
+$link-color: #08c;
+
+$font-family-serif: Lora, "Palatino Linotype", Palatino, serif;
+$font-family-base: $font-family-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+$font-size-h1: 30px;
+$font-size-h2: 24px;
+$headings-font-weight: bold;
+$headings-line-height: 54px;
+
+$grid-gutter-width: 30px;
+$container-large-desktop: ((940px + $grid-gutter-width));
+
+$dark: #333;
+$medium: #666;
+$light: #ddd;
+$background: #eee;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/type";
+
+$bootstrap-icons-font-src: url("../bootstrap-icons/bootstrap-icons.woff2?524846017b983fc8ded9325d94ed40f3") format("woff2"),
+url("../bootstrap-icons/bootstrap-icons.woff?524846017b983fc8ded9325d94ed40f3") format("woff") !default;
+
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lora Regular'), local('Lora-Regular'), url(../fonts/Lora-Regular.woff2) format('woff2');
+}
+
+body {
+    background: radial-gradient(ellipse, $background 0, $background 80%, $light 100%);
+}
+
+p {
+  line-height: 1.5em;
+  margin: 1.5em 0;
+}
+
+a {
+  text-decoration: none;
+  &:hover, &:focus { text-decoration: underline; }
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.5em;
+  margin: calc(1.5em / 3) 0;
+  font-weight: bold;
+}
+h2 {
+  font-size: 2em;
+  line-height: 1.5em;
+  margin: calc(1.5em / 2) 0;
+  font-weight: bold;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1em;
+  margin: 1em 0;
+  color: #124;
+  font-weight: bold;
+}
+
+h4, h5, h6 {
+  line-height: 1.5em;
+  margin: 1.5em 0;
+  color: #248;
+  font-weight: bold;
+}
+
+blockquote {
+  font-size: 1em;
+  font-style: italic;
+  padding: 0 0 0 1em;
+  margin: 0;
+  border-left: 0.5em solid #ddd;
+}
+
+ul, ol {
+  margin-bottom: 1.5em;
+}
+
+pre {
+  background: #efefef;
+  border-left: 1em solid #d0d0d0;
+  padding: 0 0.5em;
+  overflow: auto;
+  margin-bottom: -2px;
+}
+
+code {
+  background: #efefef;
+  padding: 0 0.3em;
+  line-height: 1.5em;
+}
+
+header {
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem;
+
+  p {
+    font-size: 0.75em;
+    line-height: 1em;
+    margin: calc(0.5em / 0.75) 0;
+	color: $medium;
+  }
+}
+
+.lc-add-rhythm {
+  cursor: pointer;
+}
+
+.lc-rhythm {
+  background: repeating-linear-gradient(
+  to bottom,
+  transparent,
+  transparent 1.5em,
+  rgba(255, 210, 210, 210) 1.5em,
+  rgba(255, 210, 210, 210) 3em);
+}
+
+// LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+@media (max-width: 767px) {
+    body {
+        padding: 0 0.5em;
+    }
+}
+

@@ -1,0 +1,18 @@
+{{ define "main" }}
+<header>
+    <h1>Sorry, not found</h1>
+</header>
+<div class="container">
+    <p>The page you requested couldn't be found.</p>
+    <p>How about searching for what you were looking for?</p>
+    <div class="search-box">
+        <form method="get" action="http://duckduckgo.com/">
+            <fieldset role="search">
+                <input type="hidden" name="q" value="site:{{.Site.BaseURL}}"/>
+                <input type="text" name="q" maxlength="255" placeholder="Search&hellip;" class="search-query"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{{ end }}
+

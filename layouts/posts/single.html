@@ -1,0 +1,72 @@
+{{ define "main" }}
+<div class="lc-blog">
+
+    {{ partial "blog_header.html" . }}
+
+    <div class="container">
+
+        {{ $is_micro := (eq .Title "") }}
+        <article class="lc-post h-entry{{ if $is_micro }} lc-post-micro{{ end }}">
+            <h1 class="p-name">
+            {{ if .Params.link }}
+            <a href="{{ .Params.link }}">{{ .Title }}</a> <i class="bi-box-arrow-up-right"></i>
+            {{ else if (not $is_micro) }}
+            {{ .Title }}
+            {{ end }}
+            </h1>
+            <div class="lc-post-meta">
+                <p><em>posted on</em>
+                <i class="bi-clock-fill" aria-hidden="true"></i>
+                <time class="lc-post-date dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                {{ with .Params.categories }}
+                    <em>in</em>
+                    <span class="lc-post-tags">
+                        {{ range $k, $tag := . }}
+                        {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/categories/{{ $tag }}">{{ $tag }}</a>
+                        {{ end }}
+                    </span>
+                {{ end }}
+                </p>
+            </div>
+            <div class="e-content">
+                {{ .Content }}
+            </div>
+        </article>
+
+        <div class="row">
+            <nav class="col-sm-12">
+                <div class="row lc-navigation">
+                    <div class="col-sm-6">
+                        {{ with .Next }}
+                        <div class="lc-navigation-prev">
+                            <i class="bi-arrow-left-circle-fill"></i>
+                            <a href="{{ .Permalink }}" 
+                               title="Previous Post: {{ .Title }}">
+                                {{ .Title | default "Newer Post" }}</a>
+                        </div>
+                        {{ end }}
+                    </div>
+                    <div class="col-sm-6">
+                        {{ with .Prev }}
+                        <div class="lc-navigation-next">
+                            <a href="{{ .Permalink }}" 
+                               title="Next Post: {{ .Title }}">
+                                {{ .Title | default "Older Post" }}</a>
+                            <i class="bi-arrow-right-circle-fill"></i>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        {{ if .Site.Params.include_conversation }}
+        <script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+        {{ end }}
+
+    </div>
+
+    {{ partial "footer.html" . }}
+
+</div>
+{{ end }}

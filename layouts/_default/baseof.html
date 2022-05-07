@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <head>
+        {{- partial "head.html" . -}}
+    </head>
+    <body>
+        {{- block "main" . }}{{- end }}
+    </body>
+    {{ $jsSource := "js/blog.js" }}
+    {{ if .IsHome }}{{ $jsSource = "js/splash.js" }}{{ end }}
+    {{ $jsOut := resources.Get $jsSource | js.Build }}
+    <script language="javascript" src="{{ $jsOut.RelPermalink }}" type="text/javascript"></script>
+    <!-- todo matomo analytics -->
+</html>
