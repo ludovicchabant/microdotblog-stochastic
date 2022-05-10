@@ -18,11 +18,11 @@
             <a href="{{ .Permalink }}" class="u-url">
             <time class="lc-post-date dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> &infin;
             </a>
-            {{ with .Params.categories }}
+            {{ with .Params.tags }}
             <em>in</em>
             <span class="lc-post-tags">
                 {{ range $k, $tag := . }}
-                {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/categories/{{ $tag }}">{{ $tag }}</a>
+                {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/blog/tag/{{ $tag }}">{{ $tag }}</a>
                 {{ end }}
             </span>
             {{ end }}

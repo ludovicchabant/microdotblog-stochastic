@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="lc-blog">
+
+    {{ partial "blog_header.html" . }}
+
+    <div class="container">
+
+        <h3>Posts with {{ .Data.Singular }} '{{ .Data.Term }}'</h3>
+
+        {{ .Content }}
+
+        {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse 25 }}
+
+        <div class="row">
+            <div class="lc-content col-sm-10 offset-sm-1">
+                <div class="home h-feed">
+
+                    <ul class="post-list">
+                        {{ range $paginator.Pages  }}
+                            {{ if .Title }}
+                                {{ partial "post_article.html" . }}
+                            {{ else }}
+                                {{ partial "post_micro.html" . }}
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        {{ partial "pagination.html" . }}
+
+    </div>
+
+    {{ partial "footer.html" . }}
+
+</div>
+{{ end }}

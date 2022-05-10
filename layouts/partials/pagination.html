@@ -8,7 +8,9 @@
                 {{ end }}
             </div>
             <div class="col-sm-4 lc-navigation-center">
-                <i class="bi-inbox-fill" aria-hidden="true"></i>&nbsp;<a href="/blog/archives">Archives</a><br/>
+                {{ with site.Params.archiveUrl }}
+                <i class="bi-inbox-fill" aria-hidden="true"></i>&nbsp;<a href="{{ . }}">Archives</a><br/>
+                {{ end }}
                 {{- $slots := 5 }}
                 {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
                 {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}

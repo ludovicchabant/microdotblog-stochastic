@@ -10,12 +10,13 @@
     <div class="wrapper odd">
         <div class="container">
             <div class="row">
+                {{ $posts := ( where ( where .Site.Pages "Type" "in" site.Params.mainSections ) "IsSection" false ) }}
                 <section id="articles" class="col-sm-6">
                     <div class="splash_box">
                         <h2>Latest Articles</h2>
                         <p>I post infrequently on <a href="/blog">The Stochastic Game</a>, my personal blog. Here are
                         the most recent entries:</p>
-                        {{ range ( first 7 ( where ( where .Site.Pages "Type" "in" .Site.Params.mainSections ) "Title" "!=" "" ).ByDate.Reverse ) }}
+                        {{ range ( first 7 ( where $posts "Title" "!=" "" ) ) }}
                           <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
                         {{ end }}
                         <p>Read <a href="/blog">more</a>...<p>
@@ -24,7 +25,7 @@
                 <section id="toots" class="col-sm-6">
                     <div class="splash_box">
                         <h2>Latest Microblogging</h2>
-                        {{ range ( first 3 ( where ( where .Site.Pages "Type" "in" .Site.Params.mainSections ) "Title" "eq" "" ).ByDate.Reverse ) }}
+                        {{ range ( first 3 ( where $posts "Title" "eq" "" ) ) }}
                         {{ partial "splash_toot.html" . }}
                         {{ end }}
                         <p>Read <a href="/blog">more</a>...<p>

@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<div class="lc-blog">
+
+    {{ partial "blog_header.html" . }}
+
+    <div class="container">
+
+        {{ .Content }}
+
+        {{ $posts := ( where ( where .Site.RegularPages "Section" "posts" ) "Title" "ne" "" ) }}
+        {{ range $posts.GroupByDate "2006" }}
+        <h2>{{ .Key }}</h2>
+        <ul class="lc-archive-list">
+            {{ range .Pages }}
+            <li>
+                <p><span class="lc-archive-date">{{ .Date.Format "Jan 02" }}</span>
+                    <a class="lc-archive-link" href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+
+    </div>
+
+</div>
+
+{{ end }}

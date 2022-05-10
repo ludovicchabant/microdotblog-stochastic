@@ -6,7 +6,9 @@
 
     <div class="container">
 
-        {{ $paginator := .Paginate .Pages.ByDate.Reverse 25 }}
+        {{ .Content }}
+
+        {{ $paginator := .Paginate ( where .Site.RegularPages "Section" "posts" ) 25 }}
 
         <div class="row">
             <div class="lc-content col-sm-10 offset-sm-1">

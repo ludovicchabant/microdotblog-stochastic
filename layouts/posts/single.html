@@ -18,11 +18,11 @@
                 <p><em>posted on</em>
                 <i class="bi-clock-fill" aria-hidden="true"></i>
                 <time class="lc-post-date dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-                {{ with .Params.categories }}
+                {{ with .Params.tags }}
                     <em>in</em>
                     <span class="lc-post-tags">
                         {{ range $k, $tag := . }}
-                        {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/categories/{{ $tag }}">{{ $tag }}</a>
+                        {{ if gt $k 0 }}, {{ end }}<a class="p-category" href="/blog/tag/{{ $tag }}">{{ $tag }}</a>
                         {{ end }}
                     </span>
                 {{ end }}
@@ -40,8 +40,8 @@
                         {{ with .Next }}
                         <div class="lc-navigation-prev">
                             <i class="bi-arrow-left-circle-fill"></i>
-                            <a href="{{ .Permalink }}" 
-                               title="Previous Post: {{ .Title }}">
+                            <a href="{{ .RelPermalink }}" 
+                               title="Newer Post">
                                 {{ .Title | default "Newer Post" }}</a>
                         </div>
                         {{ end }}
@@ -49,8 +49,8 @@
                     <div class="col-sm-6">
                         {{ with .Prev }}
                         <div class="lc-navigation-next">
-                            <a href="{{ .Permalink }}" 
-                               title="Next Post: {{ .Title }}">
+                            <a href="{{ .RelPermalink }}" 
+                               title="Older Post">
                                 {{ .Title | default "Older Post" }}</a>
                             <i class="bi-arrow-right-circle-fill"></i>
                         </div>
