@@ -5,7 +5,7 @@ var floatRemainder = function(val, div) {
   return val;
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
+window.addEventListener("load", function(event) {
   const baseline = parseFloat(window.getComputedStyle(document.querySelector('p')).lineHeight);
   const threshold = baseline / 10.0;
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         paraParentNode.style.marginBottom = (-excess).toString() + "px";
       }
       paraParentNode.style.textAlign = "center";
-      //console.log("Adjusting style on parent ", paraParentNode.style, paraParentNode.style.marginBottom);
+      //console.log("Adjusting style on parent ", paraParentNode, computedStyle.height, "%", baseline, "=", excess);
     }
     else
     {
@@ -37,10 +37,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       } else {
         img.style.marginBottom = (-excess).toString() + "px";
       }
-      //console.log("Adjusting style on ", img.style, img.style.marginBottom, baseline, excess);
+      //console.log("Adjusting style on ", img, computedStyle.height, "%", baseline, "=", excess);
     }
   });
+});
 
+window.addEventListener("DOMContentLoaded", function(event) {
   document.querySelector("a.lc-add-rhythm").addEventListener("click", function(e) {
     document.body.classList.toggle('lc-rhythm');
   });
