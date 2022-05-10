@@ -3,3 +3,4 @@ syntax:glob
 node_modules
 assets/css
 assets/jsconfig.json
+build
