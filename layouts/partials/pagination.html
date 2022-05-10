@@ -8,9 +8,11 @@
                 {{ end }}
             </div>
             <div class="col-sm-4 lc-navigation-center">
-                {{ with site.Params.archiveUrl }}
-                <i class="bi-inbox-fill" aria-hidden="true"></i>&nbsp;<a href="{{ . }}">Archives</a><br/>
+                {{ range site.Menus.pagination }}
+                <i class="bi-{{ .Pre }}" aria-hidden="true"></i>&nbsp;<a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
                 {{ end }}
+                <br />
+
                 {{- $slots := 5 }}
                 {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
                 {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}

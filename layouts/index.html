@@ -1,3 +1,11 @@
+{{ define "head" }}
+{{ with .GetPage "/blog" }}
+    {{ range .AlternativeOutputFormats }}
+    {{ $relTitle := site.Params.outputFormatNames.Get .Name | default .Name }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $relTitle }}" />
+    {{ end }}
+{{ end }}
+{{ end }}
 {{ define "main" }}
 <div class="lc-splash">
 

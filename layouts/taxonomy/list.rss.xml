@@ -1,0 +1,5 @@
+{{ define "items" }}
+{{ range (first 20 .Data.Pages) }}
+    {{ partial "feed_item.xml" . }}
+{{ end }}
+{{ end }}

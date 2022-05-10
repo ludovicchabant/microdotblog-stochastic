@@ -1,0 +1,14 @@
+{{ `<?xml version="1.0" encoding="UTF-8" ?>` | safeHTML }}
+<rss
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    version="2.0">
+<channel>
+    {{ partial "feed_channel.xml" . }}
+    {{ range (first 20 (where (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) "Title" "ne" "")) }}
+        {{ partial "feed_item.xml" . }}
+    {{ end }}
+</channel>
+</rss>
