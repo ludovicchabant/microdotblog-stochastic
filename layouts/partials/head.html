@@ -25,12 +25,14 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $relTitle }}" />
 {{ end }}
 
+{{ if .Site.Params.microblog_endpoints }}
 <link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
 <link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
 <link rel="micropub" href="https://micro.blog/micropub" />
 <link rel="microsub" href="https://micro.blog/microsub" />
 <link rel="webmention" href="https://micro.blog/webmention" />
 <link rel="subscribe" href="https://micro.blog/users/follow" />
+{{ end }}
 
 {{ if .Site.IsServer }}
     {{ $sassOpts := (dict "targetPath" "css/style.css" "includePaths" (slice "build" "node_modules") "enableSourceMap" true) }}
