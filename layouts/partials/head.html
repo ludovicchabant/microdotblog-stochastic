@@ -33,6 +33,11 @@
 <link rel="webmention" href="https://micro.blog/webmention" />
 <link rel="subscribe" href="https://micro.blog/users/follow" />
 {{ end }}
+{{ if .Site.Params.indieweb_endpoints }}
+<link rel="authorization_endpoint" href="https://indieauth.com/auth">
+<link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+<link rel="micropub" href="/micropub/index.php">
+{{ end }
 
 {{ if .Site.IsServer }}
     {{ $sassOpts := (dict "targetPath" "css/style.css" "includePaths" (slice "build" "node_modules") "enableSourceMap" true) }}
