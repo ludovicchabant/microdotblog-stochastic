@@ -37,7 +37,7 @@
 <link rel="authorization_endpoint" href="https://indieauth.com/auth">
 <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
 <link rel="micropub" href="/micropub/index.php">
-{{ end }
+{{ end }}
 
 {{ if .Site.IsServer }}
     {{ $sassOpts := (dict "targetPath" "css/style.css" "includePaths" (slice "build" "node_modules") "enableSourceMap" true) }}
