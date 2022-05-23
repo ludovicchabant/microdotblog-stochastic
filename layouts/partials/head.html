@@ -7,6 +7,9 @@
 
 <link rel="canonical" href="{{ .Permalink }}" />
 
+{{ with .Site.Author.email }}
+    <link rel="me" href="mailto:{{ . }}" />
+{{ end }}
 {{ with .Site.Params.microblog_username }}
     <link rel="me" href="https://micro.blog/{{ . }}" />
 {{ end }}
