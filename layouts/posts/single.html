@@ -37,7 +37,7 @@
             <nav class="col-sm-12">
                 <div class="row lc-navigation">
                     <div class="col-sm-6">
-                        {{ with .Next }}
+                        {{ with .NextInSection }}
                         <div class="lc-navigation-prev">
                             <i class="bi-arrow-left-circle-fill"></i>
                             <a href="{{ .RelPermalink }}" 
@@ -47,7 +47,7 @@
                         {{ end }}
                     </div>
                     <div class="col-sm-6">
-                        {{ with .Prev }}
+                        {{ with .PrevInSection }}
                         <div class="lc-navigation-next">
                             <a href="{{ .RelPermalink }}" 
                                title="Older Post">
