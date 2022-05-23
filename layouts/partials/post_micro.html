@@ -1,5 +1,14 @@
 <article class="lc-post lc-post-micro h-entry">
     <div class="p-name">{{ .Content }}</div>
+      {{ with .Params.photos }}
+      <div class="lc-post-photos row row-cols-md-2 no-gutters text-center">
+          {{ range . }}
+          <div class="col-md">
+              <a class="u-photo" href="{{ .url }}"><img src="{{ .thumb_url }}" alt="{{ .name }}" class="lc-micro-img" /></a>
+          </div>
+          {{ end }}
+      </div>
+      {{ end }}
     <div class="lc-post-meta">
         <p>
             <span class="lc-post-date bi-clock-fill" aria-hidden="true"></span>

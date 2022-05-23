@@ -2,6 +2,15 @@
   <div>
     {{ .Content }}
   </div>
+  {{ with .Params.photos }}
+  <div class="lc-post-photos row no-gutters text-center">
+      {{ range . }}
+      <div class="col-lg-3 col-md-4 col-xs-6">
+          <a class="u-photo" href="{{ .url }}"><img src="{{ .thumb_url }}" alt="{{ .name }}" class="lc-micro-img" /></a>
+      </div>
+      {{ end }}
+  </div>
+  {{ end }}
   <p class="lc-post-meta">
     <a class="lc-post-time" href="{{ .RelPermalink }}">{{ .Date.Format "Jan 2, 2006" }}</a>
   </p>

@@ -11,5 +11,11 @@
     {{ range .Params.tags }}
     <category>{{ . }}</category>
     {{ end }}
-    {{ `<description><![CDATA[` | safeHTML }}{{ .Content | safeHTML }}{{ `]]></description>` | safeHTML }}
+    {{ "<description><![CDATA[" | safeHTML }}{{ .Content | safeHTML }}
+    {{- with .Params.photos }}
+        {{- range . }}
+        <p><a class="u-photo" href="{{ .url }}"><img src="{{ .thumb_url }}" alt="{{ .name }}" class="lc-micro-img" /></a></p>
+        {{- end }}
+    {{- end }}
+    {{- "]]></description>" | safeHTML }}
 </item>
